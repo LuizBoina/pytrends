@@ -1,19 +1,10 @@
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "pytrends"
 version = "4.9.2"
 description = "Pseudo API for Google Trends"
-urls = {homepage = "https://github.com/dreyco676/pytrends"}
-requires-python = ">=3.7"
-authors = [
-    {name = "John Hogue"},
-    {name = "Burton DeWilde"},
-    {email = "dreyco676@gmail.com"}
-]
-license = {text = "Apache 2.0"}
+authors = ["John Hogue <dreyco676@gmail.com>", "Burton DeWilde <dreyco676@gmail.com>"]
+license = "Apache 2.0"
+homepage = "https://github.com/dreyco676/pytrends"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -24,28 +15,16 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "License :: OSI Approved :: Apache Software License"
 ]
-keywords = [
-    "google trends api search"
-]
-dynamic = ["readme", "dependencies"]
+keywords = ["google trends api search"]
+requires-python = ">=3.7"
 
-[tool.setuptools]
-packages = ["pytrends"]
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.32"  # Add any other dependencies you need
 
-# Taken from https://github.com/pypa/setuptools/blob/d138ec08efc2dbaebb8752e215e324f38bd807a2/setuptools/tests/config/test_pyprojecttoml.py#L68
-[tool.setuptools.dynamic.readme]
-file = ["README.md"]
-content-type = "text/markdown"
+[tool.poetry.dev-dependencies]
+pytest = "^6.2"  # Add your testing dependencies if needed
 
-[tool.setuptools.dynamic.dependencies]
-file = ["requirements.txt"]
-
-[tool.coverage.run]
-branch = true
-
-[tool.coverage.report]
-precision = 2
-show_missing = true
-
-[tool.pytest.ini_options]
-addopts = "--cov pytrends/"
+[build-system]
+requires = ["setuptools", "setuptools-scm", "poetry-core"]
+build-backend = "poetry.core.masonry.api"
